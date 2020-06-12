@@ -1,0 +1,6 @@
+#! /bin/bash
+bluetoothctl power on
+bluetoothctl agent on
+bluetoothctl default-agent
+pulseaudio -k
+bluetoothctl connect 38:18:4C:7C:E6:0D 
