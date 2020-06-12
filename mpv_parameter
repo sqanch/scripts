@@ -1,4 +1,4 @@
 #!/bin/bash
 url=$1
 i3-msg "workspace 9"
-mpv --ytdl-format=bestvideo+bestaudio $url &
+mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" $url &
