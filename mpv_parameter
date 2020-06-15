@@ -1,4 +1,4 @@
 #!/bin/bash
 url=$1
-i3-msg "workspace 9"
+i3-msg "workspace --no-auto-back-and-forth 9"
 mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" $url > /dev/null 2>&1 &
