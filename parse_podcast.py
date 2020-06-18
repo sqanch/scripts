@@ -3,7 +3,6 @@
 import sys
 import os
 
-print(sys.argv)
 podcast = sys.argv[1]
 
 link = ""
@@ -12,10 +11,21 @@ list = podcast.split(" ")
 
 for i in range(len(list)):
     if "Position" in list[i]:
-        position = list[i+1]
+        position = list[i+1].replace("\n", "")
     elif "Link" in list[i]:
-        link = list[i+1]
+        link = list[i+1].replace("\n", "")
+    elif "http" in list[i]:
+        link = list[i]
 
-print("~/.scripts/mpv_parameter \"" + link + " --start=" + position + "\"")
-os.system("~/.scripts/mpv_parameter \"" + link + " --start=" + position + "\"")
+command = "~/.scripts/mpv_parameter \"" + link + " --load-unsafe-playlists\""
+execute = command
+if position != "":
+    execute = command[:-1] + " --start=" + position + "\""
+
+if len(sys.argv) > 2:
+    time = sys.argv[2]
+    execute = command[:-1] + " --start=" + time + "\""
+
+print(execute)
+os.system(execute)
 # os.system("mpv " + link)
