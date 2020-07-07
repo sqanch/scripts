@@ -13,7 +13,7 @@
 
 # start default applications
 exec --no-startup-id i3-msg "workspace --no-auto-back-and-forth 1; append_layout .i3/ws1; workspace 2; append_layout .i3/ws2; workspace 3; append_layout .i3/ws3; workspace 1"
-#exec --no-startup-id spotify
+exec --no-startup-id spotify
 exec --no-startup-id thunderbird
 exec --no-startup-id firefox
 exec --no-startup-id i3-sensible-terminal
