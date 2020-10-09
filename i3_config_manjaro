@@ -1,5 +1,9 @@
 # install:
 # 	firefox
+# 	playerctl
+# 	pulseaudio
+# 	mpv
+# 	youtube_dl
 #
 #
 # i3 config file (v4)
@@ -48,7 +52,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 
 exec --no-startup-id volumeicon
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-exec --no-startup-id pulseaudio --start
+#exec --no-startup-id pulseaudio --start
 #exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
@@ -186,16 +190,16 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # Move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace $ws1
-bindsym $mod+Ctrl+2 move container to workspace $ws2
-bindsym $mod+Ctrl+3 move container to workspace $ws3
-bindsym $mod+Ctrl+4 move container to workspace $ws4
-bindsym $mod+Ctrl+5 move container to workspace $ws5
-bindsym $mod+Ctrl+6 move container to workspace $ws6
-bindsym $mod+Ctrl+7 move container to workspace $ws7
-bindsym $mod+Ctrl+8 move container to workspace $ws8
-bindsym $mod+Ctrl+9 move container to workspace $ws9
-bindsym $mod+Ctrl+0 move container to workspace $ws10
+# bindsym $mod+Ctrl+1 move container to workspace $ws1
+# bindsym $mod+Ctrl+2 move container to workspace $ws2
+# bindsym $mod+Ctrl+3 move container to workspace $ws3
+# bindsym $mod+Ctrl+4 move container to workspace $ws4
+# bindsym $mod+Ctrl+5 move container to workspace $ws5
+# bindsym $mod+Ctrl+6 move container to workspace $ws6
+# bindsym $mod+Ctrl+7 move container to workspace $ws7
+# bindsym $mod+Ctrl+8 move container to workspace $ws8
+# bindsym $mod+Ctrl+9 move container to workspace $ws9
+# bindsym $mod+Ctrl+0 move container to workspace $ws10
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -208,6 +212,19 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+
+# workspace to screen assignment
+workspace $ws1 output DP-0
+workspace $ws3 output DP-0
+workspace $ws5 output DP-0
+workspace $ws7 output DP-0
+workspace $ws9 output DP-0
+
+workspace $ws2 output DP-4
+workspace $ws4 output DP-4
+workspace $ws6 output DP-4
+workspace $ws8 output DP-4
+workspace $ws10 output DP-4
 
 # Open applications on specific workspaces
 # assign [class="Thunderbird"] $ws1
@@ -305,18 +322,20 @@ bindsym $mod+Escape exec --no-startup-id blurlock
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-#exec --no-startup-id manjaro-hello
+# exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-#exec --no-startup-id start_conky_maia
+# exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-#exec --no-startup-id xautolock -time 10 -locker blurlock
+# exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-#exec --no-startup-id kodi
+# exec --no-startup-id kodi
+# exec --no-startup-id xrandr --output DP-4 --off
+exec --no-startup-id xrandr --output DP-0 --mode 2560x1440 --rate 144
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -450,14 +469,12 @@ mode "$mode_gaps_outer" {
 title_align center
 
 # manage displays with xrandr
-set $mode_display Ext Screen (v) VGA ON, (h) HDMI ON,, (l) switch HDMI to left side (r) switch HDMI to right side, (y) VGA OFF, (x) HDMI OFF
+set $mode_display Ext Screen (d) DP-4 ON, (h) HDMI ON, (x) DP-4 OFF, (y) HDMI OFF
 mode "$mode_display" {
-    bindsym h exec --no-startup-id xrandr --output HDMI-0 --auto --right-of LVDS-0, mode "default"
-    bindsym l exec --no-startup-id xrandr --output HDMI-0 --off && xrandr --output HDMI-0 --auto --left-of LVDS-0, mode "default"
-    bindsym r exec --no-startup-id xrandr --output HDMI-0 --off && xrandr --output HDMI-0 --auto --right-of LVDS-0, mode "default"
-    bindsym v exec --no-startup-id xrandr --output VGA-0 --auto --right-of LVDS-0, mode "default"
-    bindsym y exec --no-startup-id xrandr --output VGA-0 --off, mode "default"
-    bindsym x exec --no-startup-id xrandr --output HDMI-0 --off, mode "default"
+    bindsym d exec --no-startup-id xrandr --output DP-4 --mode 2560x1440 --rate 144 --left-of DP-0, mode "default"
+    bindsym x exec --no-startup-id xrandr --output DP-4 --off, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-0, mode "default"
+    bindsym y exec --no-startup-id xrandr --output HDMI-0 --off, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"

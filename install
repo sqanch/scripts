@@ -1,0 +1,6 @@
+sudo pacman -Syu
+sudo pacman -S firefox playerctl mpv youtube-dl
+install_pulse
+cp ~.scripts/i3_config_manjaro ~/.i3/config
+git config --global user.email "max.l.becker@web.de"
+git config --global user.name "m3xit"
