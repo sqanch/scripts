@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# executed when lightdm starts
+# add "display-setup-script = /home/max/.scripts/lightdm_displays" to /etc/lightdm/lightdm.conf
+xrandr --output DP-0 --primary --mode 2560x1440 --rate 144 --output DP-4 --off
