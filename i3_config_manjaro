@@ -156,8 +156,8 @@ bindsym $mod+Shift+x move scratchpad
 bindsym $mod+x scratchpad show
 
 #navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Ctrl+Right workspace next_on_output
+bindsym $mod+Ctrl+Left workspace prev_on_output
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
@@ -215,7 +215,7 @@ workspace $ws1 output DP-0
 workspace $ws3 output DP-0
 workspace $ws5 output DP-0
 workspace $ws7 output DP-0
-workspace $ws9 output DP-0
+workspace $ws9 output HDMI-0 DP-0
 
 workspace $ws2 output DP-4
 workspace $ws4 output DP-4
@@ -335,8 +335,6 @@ exec --no-startup-id pamac-tray
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 # exec --no-startup-id kodi
-# exec --no-startup-id "xrandr --output DP-4 --off"
-# exec --no-startup-id "xrandr --output DP-0 --mode 2560x1440 --rate 144"
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -474,7 +472,7 @@ set $mode_display Ext Screen (d) DP-4 ON, (h) HDMI ON, (x) DP-4 OFF, (y) HDMI OF
 mode "$mode_display" {
     bindsym d exec --no-startup-id xrandr --output DP-4 --mode 2560x1440 --rate 144 --left-of DP-0, mode "default"
     bindsym x exec --no-startup-id xrandr --output DP-4 --off, mode "default"
-    bindsym h exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-0, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4, mode "default"
     bindsym y exec --no-startup-id xrandr --output HDMI-0 --off, mode "default"
 
     # back to normal: Enter or Escape
