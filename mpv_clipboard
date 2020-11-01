@@ -1,3 +1,8 @@
 #!/bin/bash
 #mpv --ytdl-format=bestvideo+bestaudio "$(xsel -ob)"
-~/.scripts/mpv_parameter "$(xsel -ob)"
+if [ $1 == floating ]
+then
+	~/.scripts/mpv_floating "$(xsel -ob)"
+else
+	~/.scripts/mpv_parameter "$(xsel -ob)"
+fi

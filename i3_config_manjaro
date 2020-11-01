@@ -44,7 +44,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 
 exec --no-startup-id volumeicon
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-exec --no-startup-id pulseaudio --start
+exec --no-startup-id pkill pulseaudio && dbus-launc hpulseaudio --start
 #exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
@@ -72,11 +72,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # The middle button over a titlebar kills the window
 bindsym --release button2 kill
-
-# open mpv in fullscreen on workspace 9
-for_window [class=mpv] move --no-auto-back-and-forth container to workspace $ws9
-for_window [class=mpv] fullscreen enable
-
 
 
 
@@ -241,6 +236,10 @@ for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [class=mpv] move --no-auto-back-and-forth container to workspace $ws9
+for_window [class=mpv] fullscreen enable
+for_window [instance="floating"] floating enable sticky enable resize set 480 270 move position 1400 20
+for_window [class="qtwebflix"] fullscreen enable
 
 # switch to workspace with urgent window automatically
 #for_window [urgent=latest] focus
@@ -446,14 +445,12 @@ mode "$mode_gaps_outer" {
 title_align center
 
 # manage displays with xrandr
-set $mode_display Ext Screen (v) VGA ON, (h) HDMI ON,, (l) switch HDMI to left side (r) switch HDMI to right side, (y) VGA OFF, (x) HDMI OFF
+set $mode_display Ext Screen (h) HDMI ON, (l) switch HDMI to left side (r) switch HDMI to right side, (x) HDMI OFF
 mode "$mode_display" {
-    bindsym h exec --no-startup-id xrandr --output HDMI-0 --auto --right-of LVDS-0, mode "default"
-    bindsym l exec --no-startup-id xrandr --output HDMI-0 --off && xrandr --output HDMI-0 --auto --left-of LVDS-0, mode "default"
-    bindsym r exec --no-startup-id xrandr --output HDMI-0 --off && xrandr --output HDMI-0 --auto --right-of LVDS-0, mode "default"
-    bindsym v exec --no-startup-id xrandr --output VGA-0 --auto --right-of LVDS-0, mode "default"
-    bindsym y exec --no-startup-id xrandr --output VGA-0 --off, mode "default"
-    bindsym x exec --no-startup-id xrandr --output HDMI-0 --off, mode "default"
+    bindsym h exec --no-startup-id xrandr --output DP1 --auto --right-of eDP1, mode "default"
+    bindsym l exec --no-startup-id xrandr --output DP1 --off && xrandr --output DP1 --auto --left-of eDP1, mode "default"
+    bindsym r exec --no-startup-id xrandr --output DP1 --off && xrandr --output DP1 --auto --right-of eDP1, mode "default"
+    bindsym x exec --no-startup-id xrandr --output DP1 --off, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -463,3 +460,4 @@ bindsym $mod+o mode "$mode_display"
 
 #open mpv with clipboard content
 bindsym $mod+y exec --no-startup-id /home/max/.scripts/mpv_clipboard
+bindsym $mod+Shift+y exec --no-startup-id /home/max/.scripts/mpv_clipboard floating
