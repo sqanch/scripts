@@ -1,0 +1,4 @@
+#!/bin/bash
+
+killall barriers
+barrierc --enable-crypto $1
