@@ -1,0 +1,3 @@
+#!/bin/bash
+
+barriers --enable-crypto -c .local/share/barrier/.barrier.conf
