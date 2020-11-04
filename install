@@ -1,9 +1,9 @@
-#sudo pacman -Syu
-#sudo pacman -S firefox playerctl mpv youtube-dl
-#install_pulse
-#cp ~/.scripts/i3_config_manjaro ~/.i3/config
-#git config --global user.email "max.l.becker@web.de"
-#git config --global user.name "m3xit"
+sudo pacman -Syu
+sudo pacman -S firefox playerctl mpv youtube-dl xorg-xev
+install_pulse
+cp ~/.scripts/i3_config_manjaro ~/.i3/config
+git config --global user.email "max.l.becker@web.de"
+git config --global user.name "m3xit"
 echo "alias sshl='ssh 192.168.178.210'" >> ~/.bashrc
 echo "alias sshu='ssh 192.168.178.200'" >> ~/.bashrc
 echo "alias sshm='ssh 192.168.178.201'" >> ~/.bashrc
