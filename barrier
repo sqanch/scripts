@@ -1,0 +1,4 @@
+#!/bin/bash
+
+killall barriers
+barriers --enable-crypto -c ~/.local/share/barrier/.barrier$2.conf --name $1
