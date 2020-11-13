@@ -175,7 +175,7 @@ exec --no-startup-id pamac-tray
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id fix_xcursor
-exec --no-startup-id "~/.scripts/barriers max-vm-manjaro"
+exec --no-startup-id "~/.scripts/barrier max-vm-manjaro"
 
 
 
@@ -232,8 +232,10 @@ bindsym --release button2 kill
 
 # start applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
+bindsym $mod+F1 exec thunderbird
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F4 exec spotify
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print --release exec --no-startup-id i3-scrot -s
