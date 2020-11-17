@@ -61,17 +61,17 @@ set $ws9 9
 set $ws10 10
 
 # workspace to screen assignment
-workspace $ws1 output DP-0
-workspace $ws3 output DP-0
-workspace $ws5 output DP-0
-workspace $ws7 output DP-0
-workspace $ws9 output HDMI-0 DP-0
+workspace $ws1 output $display1
+workspace $ws3 output $display1
+workspace $ws5 output $display1
+workspace $ws7 output $display1
+workspace $ws9 output $display3 $display1
 
-workspace $ws2 output DP-4
-workspace $ws4 output DP-4
-workspace $ws6 output DP-4
-workspace $ws8 output DP-4
-workspace $ws10 output DP-4
+workspace $ws2  output $display2
+workspace $ws4  output $display2
+workspace $ws6  output $display2
+workspace $ws8  output $display2
+workspace $ws10 output $display2
 
 # Open applications on specific workspaces
 assign [class="mpv"] $ws9
