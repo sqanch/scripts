@@ -61,17 +61,17 @@ set $ws9 9
 set $ws10 10
 
 # workspace to screen assignment
-workspace $ws1 output $display1
-workspace $ws3 output $display1
-workspace $ws5 output $display1
-workspace $ws7 output $display1
-workspace $ws9 output $display3 $display1
+workspace $ws1 output DP-0
+workspace $ws3 output DP-0
+workspace $ws5 output DP-0
+workspace $ws7 output DP-0
+workspace $ws9 output HDMI-0 DP-0
 
-workspace $ws2  output $display2
-workspace $ws4  output $display2
-workspace $ws6  output $display2
-workspace $ws8  output $display2
-workspace $ws10 output $display2
+workspace $ws2 output DP-4
+workspace $ws4 output DP-4
+workspace $ws6 output DP-4
+workspace $ws8 output DP-4
+workspace $ws10 output DP-4
 
 # Open applications on specific workspaces
 assign [class="mpv"] $ws9
@@ -91,8 +91,9 @@ for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="upm"] floating enable
-for_window [class=mpv] fullscreen enable
-for_window [class=firefox] layout tabbed
+for_window [class="mpv"] fullscreen enable
+for_window [class="firefox"] layout tabbed
+for_window [class="Thunderbird"] layout tabbed
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [instance="floating"] floating enable sticky enable resize set 480 270 move position 1400 20
@@ -233,7 +234,7 @@ bindsym --release button2 kill
 
 # start applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F1 exec thunderbird
+bindsym $mod+F1 exec tutanota-desktop; exec thunderbird
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+F4 exec spotify
