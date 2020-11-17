@@ -90,6 +90,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="upm"] floating enable
 for_window [class=mpv] fullscreen enable
 for_window [class=firefox] layout tabbed
 for_window [window_role="pop-up"] floating enable
@@ -170,7 +171,7 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
-# exec --no-startup-id blueman-applet
+exec --no-startup-id blueman-applet
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker blurlock
@@ -236,6 +237,7 @@ bindsym $mod+F1 exec thunderbird
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+F4 exec spotify
+bindsym $mod+F5 exec pamac-manager
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print --release exec --no-startup-id i3-scrot -s
@@ -346,7 +348,7 @@ bindsym $mod+Shift+y exec --no-startup-id /home/max/.scripts/mpv_clipboard float
 #############
 
 # set shut down, restart and locking features
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (p)oweroff, (Shift+s)hutdown host
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (p)oweroff, (Shift+s)hutdown host, (Shift+r)eboot host
 bindsym $mod+Shift+e mode "$mode_system"
 bindsym XF86PowerOff mode "$mode_system"
 
@@ -358,7 +360,8 @@ mode "$mode_system" {
 	bindsym h	exec --no-startup-id i3exit hibernate,		mode "default"
 	bindsym r	exec --no-startup-id i3exit reboot,		mode "default"
 	bindsym p	exec --no-startup-id i3exit shutdown,		mode "default"
-	bindsym Shift+s	exec --no-startup-id "ssh 192.168.178.94 DISPLAY=:0 gnome-session-quit --power-off --force && i3exit shutdown", mode "default"
+	bindsym Shift+s	exec --no-startup-id "ssh 192.168.178.200 sudo shutdown -P 0 && i3exit shutdown", mode "default"
+	bindsym Shift+r	exec --no-startup-id "ssh 192.168.178.200 sudo shutdown -r 0 && i3exit shutdown", mode "default"
 	bindsym XF86PowerOff exec --no-startup-id i3exit shutdown, mode "default"
 	
 	# exit system mode: "Enter" or "Escape"
