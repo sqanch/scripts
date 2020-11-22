@@ -88,8 +88,10 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
-for_window [class=mpv] fullscreen enable
-for_window [class=firefox] layout tabbed
+for_window [class="upm"] floating enable
+for_window [class="mpv"] fullscreen enable
+for_window [class="firefox"] layout tabbed
+for_window [class="Thunderbird"] layout tabbed
 for_window [class="qtwebflix"] fullscreen enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -174,7 +176,7 @@ exec --no-startup-id pamac-tray
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id fix_xcursor
-exec --no-startup-id "~/.scripts/barriers max-vm-manjaro"
+exec --no-startup-id "~/.scripts/barrier max-vm-manjaro"
 
 
 
@@ -231,10 +233,11 @@ bindsym --release button2 kill
 
 # start applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F1 exec thunderbird
+bindsym $mod+F1 exec tutanota-desktop; exec thunderbird
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+F4 exec spotify
+bindsym $mod+F5 exec pamac-manager
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print --release exec --no-startup-id i3-scrot -s
@@ -402,8 +405,8 @@ set $mode_barrier Barrier (s) start (x) stop
 bindsym $mod+b mode "$mode_barrier"
 
 mode "$mode_barrier" {
-    bindsym s exec --no-startup-id /home/max/.scripts/barriers 'max-xps13' && ssh 192.168.178.201 /home/max/.scripts/barriers_to_barrierc '192.168.178.210', mode "default"
-    bindsym x exec --no-startup-id killall barriers && ssh 192.168.178.201 /home/max/.scripts/barrierc_to_barriers 'max-vm-manjaro', mode "default"
+    bindsym s exec --no-startup-id /home/max/.scripts/barrier 'max-xps13' && ssh 192.168.178.201 /home/max/.scripts/barriers_to_barrierc '192.168.178.210', mode "default"
+    bindsym x exec --no-startup-id killall barriers && ssh 192.168.178.201 /home/max/.scripts/barrierc_to_barrier 'max-vm-manjaro', mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"

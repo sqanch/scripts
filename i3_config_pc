@@ -407,6 +407,8 @@ mode "$mode_display" {
 }
 
 set $mode_barrier Barrier (n) normal (g) game
+bindsym $mod+b mode "$mode_barrier"
+
 mode "$mode_barrier" {
     bindsym n exec --no-startup-id /home/max/.scripts/barrier 'max-vm-manjaro', mode "default"
     bindsym g exec --no-startup-id /home/max/.scripts/barrier 'max-vm-manjaro' '_ingame', mode "default"
@@ -415,4 +417,3 @@ mode "$mode_barrier" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+b mode "$mode_barrier"
