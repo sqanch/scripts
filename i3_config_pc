@@ -91,6 +91,7 @@ for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="upm"] floating enable
+for_window [class="Gufw.py"] floating enable
 for_window [class="mpv"] fullscreen enable
 for_window [class="firefox"] layout tabbed
 for_window [class="Thunderbird"] layout tabbed
@@ -172,7 +173,7 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
-exec --no-startup-id blueman-applet
+# exec --no-startup-id blueman-applet
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker blurlock
@@ -361,8 +362,8 @@ mode "$mode_system" {
 	bindsym h	exec --no-startup-id i3exit hibernate,		mode "default"
 	bindsym r	exec --no-startup-id i3exit reboot,		mode "default"
 	bindsym p	exec --no-startup-id i3exit shutdown,		mode "default"
-	bindsym Shift+s	exec --no-startup-id "ssh 192.168.178.200 sudo shutdown -P 0 && i3exit shutdown", mode "default"
-	bindsym Shift+r	exec --no-startup-id "ssh 192.168.178.200 sudo shutdown -r 0 && i3exit shutdown", mode "default"
+	bindsym Shift+s	exec --no-startup-id ssh 192.168.178.200 "LIBVIRT_DEFAULT_URI=qemu:///system virsh shutdown ubuntu20.04 && sleep 1 && sudo shutdown -P 0" && i3exit shutdown, mode "default"
+	bindsym Shift+r	exec --no-startup-id ssh 192.168.178.200 "LIBVIRT_DEFAULT_URI=qemu:///system virsh shutdown ubuntu20.04 && sleep 1 && sudo shutdown -r 0" && i3exit shutdown, mode "default"
 	bindsym XF86PowerOff exec --no-startup-id i3exit shutdown, mode "default"
 	
 	# exit system mode: "Enter" or "Escape"
@@ -407,8 +408,6 @@ mode "$mode_display" {
 }
 
 set $mode_barrier Barrier (n) normal (g) game
-bindsym $mod+b mode "$mode_barrier"
-
 mode "$mode_barrier" {
     bindsym n exec --no-startup-id /home/max/.scripts/barrier 'max-vm-manjaro', mode "default"
     bindsym g exec --no-startup-id /home/max/.scripts/barrier 'max-vm-manjaro' '_ingame', mode "default"
@@ -417,3 +416,4 @@ mode "$mode_barrier" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+bindsym $mod+b mode "$mode_barrier"
