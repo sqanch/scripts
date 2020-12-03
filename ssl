@@ -1,0 +1,11 @@
+# cert-data:
+# DE
+# Baden-Wuerttemberg
+# Walldorf
+# MaxCorp
+# CEO-Office
+# nextcloud.max.org
+# max.l.becker@web.de
+# 
+# change hostname in: /var/www/html/nextcloud/config/config.php, /etc/apache2/sites-available/[default-ssl.conf,000-default.conf]
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout apache.key -out apache.crt
