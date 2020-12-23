@@ -1,0 +1,63 @@
+#!/usr/bin/python
+
+import sys
+import subprocess
+
+
+monitors = [dict(port="eDP1", size="1920x1080", rate="60", pos="0x0")],
+#            dict(port="DVI-D-0", size="1920x1080", rate="60.00", pos="1920x0")]
+
+
+def check_status(monitor):
+    port = monitor["port"]
+    cmd = "xrandr -q"
+    result = subprocess.run(cmd.split(" "), capture_output=True, text=True).stdout
+    for line in result.splitlines():
+        if line.startswith(port):
+            connected = False
+            enabled = False
+            status = line.split(" ")[1]
+            if status == "connected":
+                connected = True
+                mode = line.split(" ")[2]
+                if not mode.startswith("("):
+                    enabled = True
+            return dict(connected=connected, enabled=enabled)
+
+    return dict(connected=False, enabled=False)
+
+
+def enable_monitor(monitor):
+    run_cmd("xrandr --output " + monitor["port"] + " --pos " + monitor["pos"] + " --auto")
+
+
+def disable_monitor(monitor):
+    run_cmd("xrandr --output " + monitor["port"] + " --off")
+
+
+def run_cmd(cmd):
+    subprocess.run(cmd.split(" "))
+
+
+if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print("Usage: monitors [toggle | status]")
+    elif sys.argv[1] == "toggle":
+        status_1 = check_status(monitors[1])
+        if status_1["connected"]:
+            if status_1["enabled"]:
+                disable_monitor(monitors[1])
+                print("Disabled Monitor 2.")
+            else:
+                enable_monitor(monitors[1])
+                print("Enabled Monitor 2.")
+        else:
+            print("Monitor 2 is not connected.")
+    elif sys.argv[1] == "status":
+        status_1 = check_status(monitors[1])
+        if status_1["enabled"]:
+            print("dual")
+        else:
+            print("mono")
+
+
