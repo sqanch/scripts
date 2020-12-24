@@ -177,7 +177,7 @@ bar {
 # exec_always --no-startup-id fix_xcursor
 # exec --no-startup-id "~/.scripts/barrier max-vm-manjaro"
 # exec --no-startup-id /usr/lib/kdeconnectd
-exec --no-startup-id ~/.scripts/start
+exec --no-startup-id ~/.scripts/start_laptop
 
 
 
