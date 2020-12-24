@@ -22,7 +22,8 @@ set $display2 DP-4
 set $display3 HDMI-0
 set $display_mode1 --mode 2560x1440 --rate 144
 set $display_mode2 --mode 2560x1440 --rate 144
-set $display_mode3 --mode 3840x2160 --rate 60
+#set $display_mode3 --mode 3840x2160 --rate 60
+set $display_mode3 --mode 1920x1080 --rate 60
 
 # configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 1
@@ -179,6 +180,7 @@ exec --no-startup-id pamac-tray
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id "~/.scripts/barrier max-vm-manjaro"
+exec --no-startup-id /usr/lib/kdeconnectd
 
 
 
