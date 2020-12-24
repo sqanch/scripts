@@ -1,9 +1,9 @@
 #!/bin/bash
 
-/usr/lib/kdeconnectd &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+nitrogen --restore
 nm-applet &
 pamac-tray &
-nitrogen --restore
 # xautolock -time 10 -locker blurlock
 ~/.scripts/barrier max-vm-manjaro
+/usr/lib/kdeconnectd &
