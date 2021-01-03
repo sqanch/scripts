@@ -7,3 +7,4 @@ pamac-tray &
 # xautolock -time 10 -locker blurlock
 ~/.scripts/barrier max-vm-manjaro
 /usr/lib/kdeconnectd &
+picom --config .config/picom/picom.conf &
