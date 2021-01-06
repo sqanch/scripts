@@ -1,25 +1,29 @@
 #!/bin/bash
-sudo pacman -Syu
-sudo pacman -S firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi
-install_pulse
-cp ~/.scripts/i3_config_manjaro ~/.i3/config
-git config --global user.email "6976764+sqanch@users.noreply.github.com"
-git config --global user.name "m3xit"
-git config --global credential.helper cache
-git config pull.rebase false
+#sudo pacman -Syu
+#sudo pacman -S firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi
+#install_pulse
+#cp ~/.scripts/i3_config_manjaro ~/.i3/config
+#git config --global user.email "6976764+sqanch@users.noreply.github.com"
+#git config --global user.name "m3xit"
+#git config --global credential.helper cache
+#git config pull.rebase false
+echo "" >> ~/.bashrc
 echo "alias sshl='ssh 192.168.178.210'" >> ~/.bashrc
 echo "alias sshu='ssh 192.168.178.200'" >> ~/.bashrc
 echo "alias sshm='ssh 192.168.178.201'" >> ~/.bashrc
+echo "" >> ~/.bashrc
+echo "export EDITOR=vim" >> ~/.bashrc
+echo "" >> ~/.bashrc
 echo "exec fish" >> ~/.bashrc
-echo "auth       optional     pam_gnome_keyring.so" | sudo tee -a /etc/pam.d/login > /dev/null
-echo "session    optional     pam_gnome_keyring.so auto_start" | sudo tee -a /etc/pam.d/login > /dev/null
-sudo systemctl enable ufw
-sudo ufw enable
-sudo systemctl enable --now fstrim.timer
-sudo ufw allow from 192.168.178.200
-sudo ufw allow from 192.168.178.201
-sudo ufw allow from 192.168.178.202
-sudo ufw allow from 192.168.178.210
-sudo ufw allow from 192.168.178.211
-sudo ufw allow from 192.168.178.212
-pamac build --no-confirm barriers barrier
+#echo "auth       optional     pam_gnome_keyring.so" | sudo tee -a /etc/pam.d/login > /dev/null
+#echo "session    optional     pam_gnome_keyring.so auto_start" | sudo tee -a /etc/pam.d/login > /dev/null
+#sudo systemctl enable ufw
+#sudo ufw enable
+#sudo systemctl enable --now fstrim.timer
+#sudo ufw allow from 192.168.178.200
+#sudo ufw allow from 192.168.178.201
+#sudo ufw allow from 192.168.178.202
+#sudo ufw allow from 192.168.178.210
+#sudo ufw allow from 192.168.178.211
+#sudo ufw allow from 192.168.178.212
+#pamac build --no-confirm barriers barrier
