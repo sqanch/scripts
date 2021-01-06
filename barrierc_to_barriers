@@ -1,4 +1,4 @@
 #!/bin/bash
 
 killall barrierc
-~/.scripts/barriers $1
+~/.scripts/barrier $1
