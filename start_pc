@@ -5,6 +5,6 @@ nitrogen --restore
 nm-applet &
 pamac-tray &
 # xautolock -time 10 -locker blurlock
-~/.scripts/barrier max-vm-manjaro
+~/.scripts/barrier max-vm-manjaro "_ingame"
 # /usr/lib/kdeconnectd &
 picom --config .config/picom/picom.conf -b --experimental-backends &
