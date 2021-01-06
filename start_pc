@@ -6,5 +6,5 @@ nm-applet &
 pamac-tray &
 # xautolock -time 10 -locker blurlock
 ~/.scripts/barrier max-vm-manjaro
-/usr/lib/kdeconnectd &
+# /usr/lib/kdeconnectd &
 picom --config .config/picom/picom.conf -b --experimental-backends &
