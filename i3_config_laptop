@@ -409,8 +409,8 @@ set $mode_barrier Barrier (s) start (x) stop
 bindsym $mod+b mode "$mode_barrier"
 
 mode "$mode_barrier" {
-    bindsym s exec --no-startup-id /home/max/.scripts/barrier 'max-xps13' && ssh 192.168.178.201 /home/max/.scripts/barriers_to_barrierc '192.168.178.210', mode "default"
-    bindsym x exec --no-startup-id killall barriers && ssh 192.168.178.201 /home/max/.scripts/barrierc_to_barriers 'max-vm-manjaro', mode "default"
+    bindsym s exec --no-startup-id /home/max/.scripts/barrier 'max-xps13' '_xps' && ssh 192.168.178.201 /home/max/.scripts/barriers_to_barrierc '192.168.178.210', mode "default"
+    bindsym x exec --no-startup-id killall barriers && ssh 192.168.178.201 /home/max/.scripts/barrierc_to_barriers 'max-vm-manjaro' '_ingame', mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
