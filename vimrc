@@ -23,3 +23,5 @@ syntax on
 :set incsearch
 :set hlsearch
 nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
+
