@@ -248,10 +248,10 @@ bindsym $mod+Print exec --no-startup-id i3-scrot
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+odiaeresis focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -260,10 +260,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -272,8 +272,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split orientation
-bindsym $mod+h split h
-bindsym $mod+v split v
+bindsym $mod+v split toggle
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -411,7 +410,7 @@ bindsym $mod+b mode "$mode_barrier"
 
 mode "$mode_barrier" {
     bindsym s exec --no-startup-id /home/max/.scripts/barrier 'max-xps13' && ssh 192.168.178.201 /home/max/.scripts/barriers_to_barrierc '192.168.178.210', mode "default"
-    bindsym x exec --no-startup-id killall barriers && ssh 192.168.178.201 /home/max/.scripts/barrierc_to_barrier 'max-vm-manjaro', mode "default"
+    bindsym x exec --no-startup-id killall barriers && ssh 192.168.178.201 /home/max/.scripts/barrierc_to_barriers 'max-vm-manjaro', mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
