@@ -235,7 +235,8 @@ bindsym --release button2 kill
 
 # start applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F1 exec tutanota-desktop; exec thunderbird
+#bindsym $mod+F1 exec tutanota-desktop; exec thunderbird
+bindsym $mod+F1 exec thunderbird
 bindsym $mod+F2 exec firefox
 # bindsym $mod+F3 exec pcmanfm
 bindsym $mod+F3 exec nemo
