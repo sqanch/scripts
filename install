@@ -1,28 +1,47 @@
 #!/bin/bash
 
 # install packets
+echo "installing packages..."
 pamac update --no-confirm
-pamac install --no-confirm firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi nemo thunderbird
+pamac install --no-confirm firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi nemo thunderbird ttf-hack
 pamac build --no-confirm barriers barrier
 install_pulse
 
 # configs
-# i3
-cp ~/.scripts/i3_config_manjaro ~/.i3/config
-# git
-git config --global user.email "6976764+sqanch@users.noreply.github.com"
-git config --global user.name "m3xit"
-git config --global credential.helper cache
-git config pull.rebase false
-# shell
+# alacritty
+echo "alacritty"
+mkdir ~/.config/alacritty
+cp ~/.scripts/config/alacritty.yml ~/.config/alacritty/alacritty.yml
+# barrier
+echo "barrier"
+cp ~/.scripts/config/barrier*.conf ~/.local/share/barrier/
+# fish
+echo "fish"
 echo "" >> ~/.bashrc
 echo "export EDITOR=vim" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "exec fish" >> ~/.bashrc
+cp ~/.scripts/config/fish_functions/* ~/.config/fish/functions/
+# git
+echo "git"
+git config --global user.email "6976764+sqanch@users.noreply.github.com"
+git config --global user.name "m3xit"
+git config --global credential.helper cache
+git config pull.rebase false
+# i3
+cp ~/.scripts/i3_config_pc ~/.i3/config
+sudo cp ~/.scripts/config/i3status.conf /etc/i3status.conf
+i3-msg "restart"
 # keyring
+echo "keyring"
 echo "auth       optional     pam_gnome_keyring.so" | sudo tee -a /etc/pam.d/login > /dev/null
 echo "session    optional     pam_gnome_keyring.so auto_start" | sudo tee -a /etc/pam.d/login > /dev/null
+# picom
+echo "picom"
+mkdir ~/.config/picom
+cp ~/.scripts/config/picom.conf ~/.config/picom/
 # ufw
+echo "ufw"
 sudo systemctl enable ufw
 sudo ufw enable
 sudo ufw allow from 192.168.178.200
@@ -31,5 +50,12 @@ sudo ufw allow from 192.168.178.202
 sudo ufw allow from 192.168.178.210
 sudo ufw allow from 192.168.178.211
 sudo ufw allow from 192.168.178.212
+# vim
+echo "vim"
+cp ~/.scripts/config/vimrc ~/.vimrc
 # ssd ftrim
-sudo systemctl enable --now fstrim.timer
+echo "ssd trim"
+#sudo systemctl enable --now fstrim.timer
+
+echo "DONE!"
+echo "TODO: lightdm"
