@@ -15,12 +15,20 @@ cp ~/.scripts/config/alacritty.yml ~/.config/alacritty/alacritty.yml
 # barrier
 echo "barrier"
 cp ~/.scripts/config/barrier*.conf ~/.local/share/barrier/
-# fish
-echo "fish"
+# bash
+echo "bash"
 echo "" >> ~/.bashrc
 echo "export EDITOR=vim" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "exec fish" >> ~/.bashrc
+echo "192.168.178.200 max-pc-ubuntu" | sudo tee -a /etc/hosts
+echo "192.168.178.201 max-vm-manjaro" | sudo tee -a /etc/hosts
+echo "192.168.178.202 nextcloud.max.org" | sudo tee -a /etc/hosts
+echo "192.168.178.210 max-xps13" | sudo tee -a /etc/hosts
+echo "192.168.178.211 pi" | sudo tee -a /etc/hosts
+echo "192.168.178.212 phone" | sudo tee -a /etc/hosts
+# fish
+echo "fish"
 cp ~/.scripts/config/fish_functions/* ~/.config/fish/functions/
 # git
 echo "git"
