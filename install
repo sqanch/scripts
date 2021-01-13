@@ -44,6 +44,9 @@ i3-msg "restart"
 echo "keyring"
 echo "auth       optional     pam_gnome_keyring.so" | sudo tee -a /etc/pam.d/login > /dev/null
 echo "session    optional     pam_gnome_keyring.so auto_start" | sudo tee -a /etc/pam.d/login > /dev/null
+# rofi
+echo "rofi"
+cp ~/.scripts/config/rofi ~/.config/rofi/config
 # picom
 echo "picom"
 mkdir ~/.config/picom
