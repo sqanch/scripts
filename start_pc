@@ -8,3 +8,4 @@ pamac-tray &
 ~/.scripts/barrier max-vm-manjaro "_ingame"
 # /usr/lib/kdeconnectd &
 picom --config .config/picom/picom.conf -b --experimental-backends &
+nextcloud &

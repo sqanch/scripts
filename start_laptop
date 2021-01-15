@@ -8,3 +8,4 @@ pamac-tray &
 ~/.scripts/barrier max-xps13
 #/usr/lib/kdeconnectd &
 picom --config .config/picom/picom.conf -b --experimental-backends &
+nextcloud &
