@@ -1,3 +1,3 @@
 function sshm
-    command ssh 192.168.178.201
+    command ssh 192.168.178.200
 end
