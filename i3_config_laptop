@@ -61,10 +61,10 @@ set $ws9 9
 set $ws10 10
 
 # workspace to screen assignment
-workspace $ws1 output $display1
-workspace $ws3 output $display1
-workspace $ws5 output $display1
-workspace $ws7 output $display1
+workspace $ws1 output $display2 $display1
+workspace $ws3 output $display2 $display1
+workspace $ws5 output $display2 $display1
+workspace $ws7 output $display2 $display1
 workspace $ws9 output $display2 $display1
 
 workspace $ws2 output  $display1
