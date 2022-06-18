@@ -14,6 +14,7 @@ mkdir ~/.config/alacritty
 cp ~/.scripts/config/alacritty.yml ~/.config/alacritty/alacritty.yml
 # barrier
 echo "barrier"
+mkdir ~/.local/share/barrier
 cp ~/.scripts/config/barrier*.conf ~/.local/share/barrier/
 # bash
 echo "bash"
