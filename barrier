@@ -1,4 +1,4 @@
 #!/bin/bash
 
 killall barriers
-barriers --enable-crypto -c ~/.local/share/barrier/barrier$2.conf --name $1
+barriers --disable-client-cert-checking -c ~/.local/share/barrier/barrier$2.conf --name $1

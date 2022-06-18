@@ -16,6 +16,7 @@ cp ~/.scripts/config/alacritty.yml ~/.config/alacritty/alacritty.yml
 echo "barrier"
 mkdir ~/.local/share/barrier
 cp ~/.scripts/config/barrier*.conf ~/.local/share/barrier/
+~/.scripts/barrier_ssl_setup
 # bash
 echo "bash"
 echo "" >> ~/.bashrc
