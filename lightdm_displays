@@ -4,4 +4,5 @@
 # add "display-setup-script = /home/max/.scripts/lightdm_displays" to /etc/lightdm/lightdm.conf under [Seat:*]
 
 # xrandr --output DP-0 --primary --mode 2560x1440 --rate 144 --output DP-4 --left-of DP-0 --mode 2560x1440 --rate 144 --output HDMI-0 --off
-xrandr --output DP-0 --primary --mode 2560x1440 --rate 144 --output DP-4 --off --output HDMI-0 --off
+# xrandr --output DP-0 --primary --mode 2560x1440 --rate 144 --output DP-4 --off --output HDMI-0 --off
+xrandr --output eDP-1 --primary --mode 2256x1504 --rate 60
