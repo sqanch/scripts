@@ -16,19 +16,14 @@
 # set variables
 # (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
-set $host max-vm-manjaro
+set $host max-framework-manjaro
 set $display1 eDP1
 set $display2 DP1
-set $display_mode1 --mode 1920x1080
+set $display_mode1 --mode 2256x1504
 set $display_mode2 --mode auto
 
-# configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 1
-default_floating_border normal
-
 # hide borders
-hide_edge_borders both
-#hide_edge_borders smart
+hide_edge_borders smart
 smart_borders on
 
 # font for window titles. will also be used by the bar unless a different font
@@ -89,14 +84,14 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
-#for_window [class="upm"] floating enable
 for_window [class="mpv"] fullscreen enable
 for_window [class="firefox"] layout tabbed
-for_window [class="Thunderbird"] layout tabbed
+for_window [class="thunderbird"] layout tabbed
 for_window [class="qtwebflix"] fullscreen enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [instance="floating"] floating enable sticky enable resize set 480 270 move position 1400 20
+for_window [class=".*"] border pixel 3
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -166,18 +161,6 @@ bar {
 ### AUTOSTART ###
 #################
 
-# autostart applications
-# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec --no-startup-id nitrogen --restore
-# exec --no-startup-id nm-applet
-# exec --no-startup-id pamac-tray
-# # exec --no-startup-id blueman-applet
-# # exec --no-startup-id start_conky_maia
-# # exec --no-startup-id start_conky_green
-# # exec --no-startup-id xautolock -time 10 -locker blurlock
-# exec_always --no-startup-id fix_xcursor
-# exec --no-startup-id "~/.scripts/barrier max-vm-manjaro"
-# exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id ~/.scripts/start_laptop
 
 
@@ -365,7 +348,7 @@ mode "$mode_system" {
 	bindsym h	exec --no-startup-id i3exit hibernate,		mode "default"
 	bindsym r	exec --no-startup-id i3exit reboot,		mode "default"
 	bindsym p	exec --no-startup-id i3exit shutdown,		mode "default"
-#	bindsym XF86PowerOff exec --no-startup-id i3exit shutdown, mode "default"
+ 	bindsym XF86PowerOff exec --no-startup-id i3exit shutdown, mode "default"
 	
 	# exit system mode: "Enter" or "Escape"
 	bindsym Return mode "default"

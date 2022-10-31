@@ -78,3 +78,4 @@ echo "ssd trim"
 
 echo "DONE!"
 echo "TODO: lightdm"
+echo "TODO: wlan dns"
