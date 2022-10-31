@@ -73,8 +73,11 @@ sudo ufw allow from 192.168.178.213
 echo "vim"
 cp ~/.scripts/config/vimrc ~/.vimrc
 # ssd ftrim
-echo "ssd trim"
+#echo "ssd trim"
 #sudo systemctl enable --now fstrim.timer
+# yubikey
+echo "yubikey"
+sudo systemctl enable --now pcscd
 
 echo "DONE!"
 echo "TODO: lightdm"
