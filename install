@@ -3,7 +3,7 @@
 # install packets
 echo "installing packages..."
 pamac update --no-confirm
-pamac install --no-confirm firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi nemo thunderbird ttf-hack bitwarden nextcloud-client yubioath-desktop
+pamac install --no-confirm firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi nemo thunderbird ttf-hack bitwarden nextcloud-client yubioath-desktop libinput-gestures wmctrl
 pamac build --no-confirm barriers barrier
 install_pulse
 
@@ -50,6 +50,10 @@ i3-msg "restart"
 echo "keyring"
 echo "auth       optional     pam_gnome_keyring.so" | sudo tee -a /etc/pam.d/login > /dev/null
 echo "session    optional     pam_gnome_keyring.so auto_start" | sudo tee -a /etc/pam.d/login > /dev/null
+# libinput gestures
+sudo gpasswd -a $USER input
+cp ~/.scripts/config/libinput-gestures.conf ~/.config/libinput-gestures.conf
+libinput-gestures-setup stop autostop desktop start
 # rofi
 echo "rofi"
 mkdir ~/.config/rofi
