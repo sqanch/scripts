@@ -9,3 +9,4 @@ pamac-tray &
 #/usr/lib/kdeconnectd &
 picom --config .config/picom/picom.conf -b --experimental-backends &
 nextcloud &
+libinput-gestures-setup start

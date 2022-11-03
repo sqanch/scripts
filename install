@@ -3,8 +3,8 @@
 # install packets
 echo "installing packages..."
 pamac update --no-confirm
-pamac install --no-confirm firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi nemo thunderbird ttf-hack bitwarden nextcloud-client yubioath-desktop libinput-gestures wmctrl
-pamac build --no-confirm barriers barrier
+pamac install --no-confirm firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi nemo thunderbird ttf-hack bitwarden nextcloud-client yubioath-desktop libinput-gestures wmctrl barrier
+pamac build --no-confirm barriers
 install_pulse
 
 # configs
@@ -35,6 +35,7 @@ echo "firefox"
 echo export MOZ_USE_XINPUT2=1 | sudo tee /etc/profile.d/use-xinput2.sh
 # fish
 echo "fish"
+sudo mkdir ~/.config/fish/functions
 cp ~/.scripts/config/fish_functions/* ~/.config/fish/functions/
 # git
 echo "git"
@@ -86,3 +87,4 @@ sudo systemctl enable --now pcscd
 echo "DONE!"
 echo "TODO: lightdm"
 echo "TODO: wlan dns"
+echo "TODO: other packages: chromium discord gimp kdeconnect python-pip ufw xclip spotify(aur) balena-etcher(aur)"
