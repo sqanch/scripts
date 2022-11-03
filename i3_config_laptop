@@ -356,17 +356,17 @@ mode "$mode_system" {
 }
 
 # resize window (you can also use the mouse for that)
-set $mode_resize (Left/j) shrink width, (Right/ö) grow width, (Up/l) shrink height, (Down/k) grow height
+set $mode_resize (Left/h) shrink width, (Right/l) grow width, (Up/k) shrink height, (Down/j) grow height
 bindsym $mod+r mode "$mode_resize"
 
 mode "$mode_resize" {
-	bindsym j		resize shrink	width	5 px or 5 ppt
+	bindsym h		resize shrink	width	5 px or 5 ppt
 	bindsym Left		resize shrink	width	5 px or 5 ppt
-	bindsym k		resize grow	height	5 px or 5 ppt
+	bindsym j		resize grow	height	5 px or 5 ppt
 	bindsym Down		resize grow	height	5 px or 5 ppt
-	bindsym l		resize shrink	height	5 px or 5 ppt
+	bindsym k		resize shrink	height	5 px or 5 ppt
 	bindsym Up		resize shrink	height	5 px or 5 ppt
-	bindsym odiaeresis	resize grow	width	5 px or 5 ppt
+	bindsym l		resize grow	width	5 px or 5 ppt
 	bindsym Right		resize grow	width	5 px or 5 ppt
 	
 	# exit resize mode: Enter or Escape
@@ -393,12 +393,14 @@ set $mode_barrier Barrier (s) start (x) stop
 bindsym $mod+b mode "$mode_barrier"
 
 mode "$mode_barrier" {
-    #bindsym s exec --no-startup-id /home/max/.scripts/barrier 'max-xps13' '_xps' && ssh 192.168.178.201 /home/max/.scripts/barriers_to_barrierc '192.168.178.210', mode "default"
-    bindsym s exec --no-startup-id /home/max/.scripts/barrier 'max-xps13' '_nuc' && ssh 192.168.178.202 /home/max/.scripts/barriers_to_barrierc '192.168.178.210', mode "default"
-    bindsym x exec --no-startup-id killall barriers # && ssh 192.168.178.201 /home/max/.scripts/barrierc_to_barriers 'max-vm-manjaro' '_ingame', mode "default"
+    #bindsym s exec --no-startup-id /home/max/.scripts/barrier 'max-xps13' '_xps' && ssh 192.168.178.201 /home/max/.scripts/barriers_to_bar
+rierc '192.168.178.210', mode "default"
+    bindsym s exec --no-startup-id /home/max/.scripts/barrier 'max-xps13' '_nuc' && ssh 192.168.178.202 /home/max/.scripts/barriers_to_barr
+ierc '192.168.178.210', mode "default"
+    bindsym x exec --no-startup-id killall barriers # && ssh 192.168.178.201 /home/max/.scripts/barrierc_to_barriers 'max-vm-manjaro' '_ing
+ame', mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
