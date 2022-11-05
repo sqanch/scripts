@@ -3,7 +3,7 @@
 # install packets
 echo "installing packages..."
 pamac update --no-confirm
-pamac install --no-confirm firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi nemo thunderbird ttf-hack bitwarden nextcloud-client yubioath-desktop libinput-gestures wmctrl barrier
+pamac install --no-confirm firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi nemo thunderbird ttf-hack bitwarden nextcloud-client yubioath-desktop libinput-gestures wmctrl barrier xorg-xbacklight
 pamac build --no-confirm barriers
 install_pulse
 
