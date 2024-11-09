@@ -10,3 +10,5 @@ pamac-tray &
 picom --config .config/picom/picom.conf -b --experimental-backends &
 nextcloud &
 libinput-gestures-setup start
+xinput set-prop 11 "libinput Accel Speed" +0.1
+/home/max/.i3/i3-battery-popup/i3-battery-popup -n -D -L 20 -l 10

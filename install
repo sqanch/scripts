@@ -3,11 +3,15 @@
 # install packets
 echo "installing packages..."
 pamac update --no-confirm
-pamac install --no-confirm firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi nemo thunderbird ttf-hack bitwarden nextcloud-client yubioath-desktop libinput-gestures wmctrl barrier xorg-xbacklight
+pamac install --no-confirm firefox playerctl mpv youtube-dl xorg-xev fish alacritty rofi nemo thunderbird ttf-hack bitwarden nextcloud-client yubioath-desktop libinput-gestures wmctrl barrier acpilight awesome-terminal-fonts
 pamac build --no-confirm barriers
 install_pulse
 
 # configs
+# acpilight
+sudo usermod -a -G video max
+echo "acpilight"
+sudo cp .scripts/config/90-backlight.rules /etc/udev/rules.d/
 # alacritty
 echo "alacritty"
 mkdir ~/.config/alacritty
