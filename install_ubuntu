@@ -1,0 +1,64 @@
+sudo apt update
+sudo apt upgrade
+sudo apt -y install vim curl git
+# bitwarden
+
+# github
+git config --global user.email "6976764+sqanch@users.noreply.github.com"
+git config --global user.name "sqanch"
+git config --global credential.helper cache
+git config pull.rebase false
+ssh-keygen
+echo "add key to github!"
+cat .ssh/id_ed25519.pub
+
+# scripts
+cd /home/max
+git clone git@github.com:sqanch/scripts.git
+mv scripts .scripts
+
+# regolith
+wget -qO - https://regolith-desktop.org/regolith.key | gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
+echo deb "[arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg] \
+https://regolith-desktop.org/release-3_2-ubuntu-noble-amd64 noble main" | sudo tee /etc/apt/sources.list.d/regolith.list
+sudo apt install regolith-desktop regolith-session-flashback regolith-session-sway regolith-look-lascaille i3xrocks-focused-window-name i3xrocks-memory i3xrocks-battery i3xrocks-disk-capacity i3xrocks-temp i3xrocks-volume i3xrocks-wifi
+
+# firefox
+sudo snap remove firefox
+sudo apt remove firefox
+sudo install -d -m 0755 /etc/apt/keyrings
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+gpg -n -q --import --import-options import-show /etc/apt/keyrings/packages.mozilla.org.asc | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3") print "\nThe key fingerprint matches ("$0").\n"; else print "\nVerification failed: the fingerprint ("$0") does not match the expected one.\n"}'
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
+echo '
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | sudo tee /etc/apt/preferences.d/mozilla
+sudo apt-get update && sudo apt-get install firefox
+echo export MOZ_USE_XINPUT2=1 >> /home/max/.profile
+
+# thunderbird
+sudo snap remove --purge thunderbird
+sudo apt remove thunderbird
+sudo add-apt-repository ppa:mozillateam/ppa
+echo '
+Package: thunderbird*
+Pin: release o=LP-PPA-mozillateam
+Pin-Priority: 1001
+' | sudo tee /etc/apt/preferences.d/mozillateamppa
+sudo apt install thunderbird
+
+# libinput-gestures
+sudo gpasswd -a $USER input
+sudo apt-get install libinput-tools
+mkdir /home/max/software
+cd /home/max/software
+git clone https://github.com/bulletmark/libinput-gestures.git
+cd libinput-gestures
+sudo ./libinput-gestures-setup install
+cp /home/max/.scripts/config/libinput-gestures.conf /home/max/.config/
+libinput-gestures-setup autostart start
+
+# other
+echo "change grub timeout in /etc/default/grub and run update-grub"
